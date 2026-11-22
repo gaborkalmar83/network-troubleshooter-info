@@ -1,33 +1,201 @@
 <!doctype html>
 <html lang="en">
 <head>
-<title>Ultimate Network Troubleshooter</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ultimate Network Troubleshooter: WiFi, Speed Test, Port Scanner</title>
+<meta name="description" content="Ultimate Network Troubleshooter for Android: WiFi channel analyzer, 4G/5G antenna map, speed test, device and port scanner, network map and more. Free.">
+<link rel="canonical" href="https://netcheck.kalmarium.com/">
+<meta property="og:title" content="Ultimate Network Troubleshooter: WiFi, Speed Test, Port Scanner">
+<meta property="og:description" content="Ultimate Network Troubleshooter for Android: WiFi channel analyzer, 4G/5G antenna map, speed test, device and port scanner, network map and more. Free.">
+<meta property="og:image" content="https://netcheck.kalmarium.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Ultimate Network Troubleshooter app showing a network health score of 92">
+<meta property="og:url" content="https://netcheck.kalmarium.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ultimate Network Troubleshooter">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ultimate Network Troubleshooter: WiFi, Speed Test, Port Scanner">
+<meta name="twitter:description" content="Ultimate Network Troubleshooter for Android: WiFi channel analyzer, 4G/5G antenna map, speed test, device and port scanner, network map and more. Free.">
+<meta name="twitter:image" content="https://netcheck.kalmarium.com/og-image.jpg">
+<link rel="icon" href="img/icon.png" type="image/png">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "MobileApplication",
+ "name": "Ultimate Network Troubleshooter",
+ "operatingSystem": "Android",
+ "applicationCategory": "UtilitiesApplication",
+ "description": "Android network app with a WiFi channel analyzer, 4G/5G antenna map, speed test, walk-around heat map, device and port scanner, network map with PDF and draw.io export, iPerf3, DNS, Whois and more.",
+ "offers": {
+  "@type": "Offer",
+  "price": "0",
+  "priceCurrency": "EUR"
+ },
+ "installUrl": "https://play.google.com/store/apps/details?id=com.kalmarium.networktroubleshooter&referrer=utm_source%3Dwebsite%26utm_medium%3Dhero",
+ "url": "https://netcheck.kalmarium.com/",
+ "image": "https://netcheck.kalmarium.com/og-image.jpg",
+ "publisher": {
+  "@type": "Organization",
+  "name": "Kalmarium Services BV",
+  "url": "https://kalmarium.com"
+ }
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "Is Ultimate Network Troubleshooter free?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes. It is free with one small banner ad. A one-time purchase removes the ad for good, with no subscription."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Why does it ask for location access?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Android requires precise location permission before any app may list nearby Wi-Fi networks and mobile antennas. The app uses it on your phone only. Bluetooth scanning needs the Nearby devices permission, and App activity needs Usage access, which is only requested if you use that tool."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Does the app upload my data?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "There is no account and no analytics, and what the app measures stays on your phone. Some features contact public services only when you use them, for example OpenCelliD and BeaconDB for antenna positions and Cloudflare for the speed test. The privacy policy lists them all."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can I see other people's traffic with it?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No. Android does not let apps capture other devices' traffic. The app shows what devices announce, what your own connection does and, with Usage access, how much data each app on your phone uses."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Is it legal to scan a network?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Only scan networks you own or have permission to test. The device and port scanners send packets to the hosts you choose."
+   }
+  }
+ ]
+}
+</script>
 <style>
-  :root { --bg:#F5F7F9; --text:#0B1114; --muted:#5B6A70; --card:#FFFFFF; --line:#D9E1E5; --accent:#00A88F; --link:#0A6FB8; }
+  :root { --bg:#F5F7F9; --text:#0B1114; --muted:#4F5F66; --card:#FFFFFF; --line:#D9E1E5; --accent:#00A88F; --accent-text:#00725F; --link:#0A6FB8; }
   @media (prefers-color-scheme: dark) {
-    :root { --bg:#05070A; --text:#EAF3F5; --muted:#93A5AB; --card:#0F1519; --line:#243238; --accent:#2DFFB3; --link:#5CC8FF; }
+    :root { --bg:#05070A; --text:#EAF3F5; --muted:#93A5AB; --card:#0F1519; --line:#243238; --accent:#2DFFB3; --accent-text:#2DFFB3; --link:#5CC8FF; }
   }
   * { box-sizing: border-box; }
   body { margin:0; background:var(--bg); color:var(--text); font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; }
-  main { max-width:760px; margin:0 auto; padding:32px 20px 64px; }
+  main { max-width:860px; margin:0 auto; padding:32px 20px 64px; }
   h1 { font-size:2.4rem; line-height:1.08; margin:0 0 6px; letter-spacing:-0.02em; font-weight:300; }
-  h1 span { color:var(--accent); font-weight:600; }
-  h2 { font-size:1.2rem; margin:30px 0 6px; }
-  p.lead { color:var(--muted); margin:0 0 20px; }
+  h1 span { color:var(--accent-text); font-weight:600; }
+  h2 { font-size:1.25rem; line-height:1.3; margin:0 0 6px; }
+  p.lead { color:var(--muted); margin:0 0 20px; font-size:1.1rem; }
   .card { background:var(--card); border:1px solid var(--line); border-radius:20px; padding:18px 20px; margin:16px 0; }
+  .card p { margin:0; }
+  .hero { display:flex; flex-wrap:wrap; align-items:center; gap:16px; margin:8px 0 8px; }
+  .badge { display:inline-block; line-height:0; border-radius:10px; }
+  .sr { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+  .note { color:var(--muted); font-size:.92rem; margin:0; }
+  .feat { display:grid; grid-template-columns:1fr; gap:14px; align-items:center; background:var(--card); border:1px solid var(--line); border-radius:20px; padding:18px 20px; margin:18px 0; }
+  .feat img { width:100%; max-width:300px; height:auto; border-radius:14px; border:1px solid var(--line); justify-self:center; }
+  .feat p, .feat ul { margin:0; }
+  .feat ul { padding-left:1.2em; }
+  @media (min-width:700px) {
+    .feat { grid-template-columns:240px 1fr; gap:24px; }
+    .feat.alt { grid-template-columns:1fr 240px; }
+    .feat.alt img { order:2; }
+    .feat img { max-width:240px; }
+    .feat.noimg { grid-template-columns:1fr; }
+  }
+  details { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:10px 16px; margin:10px 0; }
+  summary { cursor:pointer; font-weight:600; }
+  details p { margin:8px 0 2px; }
   a { color:var(--link); }
-  footer { color:var(--muted); font-size:.9rem; margin-top:40px; }
+  .more ul { list-style:none; padding:0; margin:8px 0 0; display:flex; flex-wrap:wrap; gap:6px 18px; }
+  footer { color:var(--muted); font-size:.9rem; margin-top:40px; border-top:1px solid var(--line); padding-top:20px; }
+  footer h2 { font-size:1rem; }
 </style>
+<script defer src="https://overwatch.kalmarium.com/h.js" data-app="network-troubleshooter"></script>
 </head>
 <body>
 <main>
+<header>
 <h1>Ultimate Network <span>Troubleshooter</span></h1>
-<p class="lead">The Swiss army knife for your network, on Android.</p>
-<div class="card"><p>Wi-Fi channel analyser, 4G/5G antenna map, speed test, walk-around heat map, device and port scanner, network map with PDF and draw.io export, route map, iPerf3, DNS, Whois, cloud service checks, Bluetooth scan, and a per-app network activity report. Free with a banner ad; a one-time purchase removes the ad.</p></div>
-<p><a href="privacy-policy.html">Privacy policy</a> &middot; Support: <a href="mailto:kalmariumservices@gmail.com">kalmariumservices@gmail.com</a></p>
-<footer>&copy; 2026 Kalmarium Services BV</footer>
+<p class="lead">WiFi analyzer, speed test, port scanner and more: the Swiss army knife for your network, on Android.</p>
+<div class="hero">
+<a class="badge" href="https://play.google.com/store/apps/details?id=com.kalmarium.networktroubleshooter&amp;referrer=utm_source%3Dwebsite%26utm_medium%3Dhero" aria-label="Get it on Google Play"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 54" width="180" height="54" aria-hidden="true" focusable="false"><rect x="1" y="1" width="178" height="52" rx="9" fill="#000" stroke="#8A9499" stroke-width="1.5"/><path d="M14 11 L14 43 L32 27 Z" fill="#2DFFB3"/><path d="M14 11 L32 27 L38 21 Z" fill="#5CC8FF"/><path d="M14 43 L32 27 L38 33 Z" fill="#FFB020"/><text x="46" y="21" fill="#fff" font-family="system-ui,Arial,sans-serif" font-size="10" letter-spacing="1">GET IT ON</text><text x="46" y="40" fill="#fff" font-family="system-ui,Arial,sans-serif" font-size="19" font-weight="600">Google Play</text></svg><span class="sr">Get it on Google Play</span></a>
+<p class="note">Free with one small banner ad. A one-time purchase removes it.</p>
+</div>
+</header>
+
+<div class="card"><p>Ultimate Network Troubleshooter finds out what is wrong with your Wi-Fi, which channel is best, where mobile antennas are, how fast your connection really is and what is on your network. It starts simple, with a plain-language view, and has an Advanced switch for dBm, channel widths, cell IDs and raw details. There is no account, and what the app measures stays on your phone.</p></div>
+
+<section class="feat">
+<img src="img/home.jpg" width="560" height="610" alt="The Network Health screen showing a score of 92, Wi-Fi signal in dBm and mobile signal" loading="lazy">
+<div><h2>WiFi channel analyzer and network health score</h2>
+<p>See every nearby network on 2.4, 5 and 6 GHz, how much they overlap and which channel is best for your area, in plain words. The home screen turns your Wi-Fi and mobile signal into one network health score. Switch on Advanced for dBm, channel widths and raw details.</p></div>
+</section>
+<section class="feat alt">
+<img src="img/cell-map.jpg" width="560" height="610" alt="Cellular screen with a map of 40 nearby antennas and the serving cell details" loading="lazy">
+<div><h2>4G and 5G antenna map</h2>
+<p>See your serving cell with signal strength and quality, and the mobile antennas around you on a map. Positions come from OpenCelliD, BeaconDB and OpenStreetMap, so towers are estimates.</p></div>
+</section>
+<section class="feat">
+<img src="img/speed.jpg" width="560" height="610" alt="Speed test result showing download, upload, ping and jitter" loading="lazy">
+<div><h2>Speed test and walk-around WiFi heat map</h2>
+<p>Measure download, upload, ping and jitter against Cloudflare's public speed servers, or test against a public iPerf3 server. Walk mode lets you walk around your home or office and tap where you stand to build a signal heat map that shows the weak spots and the best channel for the whole house.</p></div>
+</section>
+<section class="feat alt">
+<img src="img/network-map.jpg" width="560" height="610" alt="Network map screen with internet and provider boxes and buttons to save as PDF or draw.io" loading="lazy">
+<div><h2>Network map and device scanner</h2>
+<p>Scan your network to list devices with their brand where Android allows it, and map everything from the internet down to each device, including every hop of the route. Save the map as a PDF or a draw.io file, and hide IP addresses and names before you share it. A full network report exports as an A4 PDF.</p></div>
+</section>
+<section class="feat">
+<img src="img/tools.jpg" width="560" height="610" alt="Tools screen listing devices and ports, listening mode, exposure check, route map and ping" loading="lazy">
+<div><h2>Port scanner and security checks</h2>
+<p>A TCP port scanner (common ports, 1-1024, or all in Advanced mode) explains in plain language what each open port means. The exposure check shows what the internet can reach on your network, and listening mode hears what devices announce without sending anything. Only scan networks you own or have permission to test.</p></div>
+</section>
+<section class="feat noimg">
+<div><h2>More network tools</h2>
+<ul><li>Route map, ICMP and TCP ping, iPerf3 client and server</li><li>DNS lookup, Whois, IP and provider lookup, website and certificate check</li><li>Wake-on-LAN and subnet calculator</li><li>Cloud and services check: about 40 services plus each provider's own status page, so you can tell a provider outage from your own connection</li><li>Bluetooth scan for nearby devices, beacons and trackers</li><li>App activity: timed scans that show which apps use mobile and Wi-Fi data, with a PDF report</li></ul></div>
+</section>
+
+<h2 style="margin-top:34px">Frequently asked questions</h2>
+<details><summary>Is Ultimate Network Troubleshooter free?</summary><p>Yes. It is free with one small banner ad. A one-time purchase removes the ad for good, with no subscription.</p></details>
+<details><summary>Why does it ask for location access?</summary><p>Android requires precise location permission before any app may list nearby Wi-Fi networks and mobile antennas. The app uses it on your phone only. Bluetooth scanning needs the Nearby devices permission, and App activity needs Usage access, which is only requested if you use that tool.</p></details>
+<details><summary>Does the app upload my data?</summary><p>There is no account and no analytics, and what the app measures stays on your phone. Some features contact public services only when you use them, for example OpenCelliD and BeaconDB for antenna positions and Cloudflare for the speed test. The privacy policy lists them all.</p></details>
+<details><summary>Can I see other people's traffic with it?</summary><p>No. Android does not let apps capture other devices' traffic. The app shows what devices announce, what your own connection does and, with Usage access, how much data each app on your phone uses.</p></details>
+<details><summary>Is it legal to scan a network?</summary><p>Only scan networks you own or have permission to test. The device and port scanners send packets to the hosts you choose.</p></details>
+
+<p style="margin-top:28px"><a href="privacy-policy.html">Privacy policy</a> &middot; Support: <a href="mailto:kalmariumservices@gmail.com">kalmariumservices@gmail.com</a></p>
+<footer>
+<nav class="more" aria-label="More from Kalmarium">
+<h2>More from Kalmarium</h2>
+<ul>
+<li><a href="https://knowdrop.kalmarium.com">Knowdrop - daily trivia quiz</a></li>
+<li><a href="https://lingua.kalmarium.com">Lingua Pairs - language memory game</a></li>
+<li><a href="https://prep4cert.kalmarium.com">Prep 4 Cert - Microsoft exam practice</a></li>
+<li><a href="https://tankageddon.kalmarium.com">Tankageddon - offline tank shooter</a></li>
+<li><a href="https://crackafold.kalmarium.com">Crack A Fold - foldable screen prank</a></li>
+<li><a href="https://bilingua.kalmarium.com">Bilingua Reader - EPUB reader with translations</a></li>
+<li><a href="https://kalmarium.com">Kalmarium - all apps</a></li>
+</ul>
+</nav>
+<p>&copy; 2026 Kalmarium Services BV, the Netherlands</p>
+</footer>
 </main>
 </body>
 </html>
