@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Port Scanner Basics: Open Ports and When Scanning Is Legal</title>
+<meta name="description" content="What a port scanner does, what an open port means in plain words, and why you should only scan networks that you own or have clear permission to test.">
+<link rel="canonical" href="https://netcheck.kalmarium.com/port-scanner-basics/">
+<meta name="theme-color" content="#F5F7F9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#05070A" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Ultimate Network Troubleshooter">
+<meta property="og:title" content="Port Scanner Basics: Open Ports and When Scanning Is Legal">
+<meta property="og:description" content="What a port scanner does, what an open port means in plain words, and why you should only scan networks that you own or have clear permission to test.">
+<meta property="og:url" content="https://netcheck.kalmarium.com/port-scanner-basics/">
+<meta property="og:image" content="https://netcheck.kalmarium.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Ultimate Network Troubleshooter app showing a network health score of 92">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Port Scanner Basics: Open Ports and When Scanning Is Legal">
+<meta name="twitter:description" content="What a port scanner does, what an open port means in plain words, and why you should only scan networks that you own or have clear permission to test.">
+<meta name="twitter:image" content="https://netcheck.kalmarium.com/og-image.jpg">
+<link rel="icon" href="../img/icon.png" type="image/png">
+<link rel="apple-touch-icon" href="../img/icon.png">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Organization",
+   "@id": "https://apps.kalmarium.com/#org",
+   "name": "Kalmarium Services",
+   "legalName": "Kalmarium Services B.V.",
+   "alternateName": [
+    "Kalmarium",
+    "Kalmarium Apps"
+   ],
+   "url": "https://apps.kalmarium.com/",
+   "logo": "https://apps.kalmarium.com/brand/dev-icon-512.png",
+   "email": "kalmariumservices@gmail.com",
+   "sameAs": [
+    "https://play.google.com/store/apps/developer?id=Kalmarium+Services",
+    "https://www.youtube.com/@kalmariumservices",
+    "https://kalmarium.com"
+   ]
+  },
+  {
+   "@type": "WebSite",
+   "@id": "https://netcheck.kalmarium.com/#website",
+   "name": "Ultimate Network Troubleshooter",
+   "url": "https://netcheck.kalmarium.com/",
+   "publisher": {
+    "@id": "https://apps.kalmarium.com/#org"
+   }
+  },
+  {
+   "@type": "Article",
+   "@id": "https://netcheck.kalmarium.com/port-scanner-basics/#article",
+   "headline": "Port Scanner Basics: Open Ports and When Scanning Is Legal",
+   "description": "What a port scanner does, what an open port means in plain words, and why you should only scan networks that you own or have clear permission to test.",
+   "image": "https://netcheck.kalmarium.com/og-image.jpg",
+   "datePublished": "2026-11-26",
+   "dateModified": "2026-11-26",
+   "inLanguage": "en",
+   "author": {
+    "@id": "https://apps.kalmarium.com/#org"
+   },
+   "publisher": {
+    "@id": "https://apps.kalmarium.com/#org"
+   },
+   "isPartOf": {
+    "@id": "https://netcheck.kalmarium.com/#website"
+   },
+   "mainEntityOfPage": "https://netcheck.kalmarium.com/port-scanner-basics/"
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Ultimate Network Troubleshooter",
+     "item": "https://netcheck.kalmarium.com/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Port scanner basics",
+     "item": "https://netcheck.kalmarium.com/port-scanner-basics/"
+    }
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "What is the difference between a device scan and a port scan?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "A device scan finds which devices answer on your network. A port scan checks which ports on one device accept connections."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Does an open port mean I have been hacked?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "No. An open port only means a program is listening, which is normal for many devices. Look closer when you do not recognise the service or when it is reachable from the internet without a reason."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Can I scan my neighbour's network to test it?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "No. Only scan networks you own or have permission to test."
+     }
+    }
+   ]
+  }
+ ]
+}
+</script>
+<style>
+  :root { --bg:#F5F7F9; --text:#0B1114; --muted:#4F5F66; --card:#FFFFFF; --line:#D9E1E5; --accent:#00A88F; --accent-text:#00725F; --link:#0A6FB8; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#05070A; --text:#EAF3F5; --muted:#93A5AB; --card:#0F1519; --line:#243238; --accent:#2DFFB3; --accent-text:#2DFFB3; --link:#5CC8FF; }
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; }
+  main { max-width:860px; margin:0 auto; padding:32px 20px 64px; }
+  h1 { font-size:2.4rem; line-height:1.1; margin:0 0 8px; letter-spacing:-0.02em; font-weight:300; }
+  h1 span { display:block; margin-top:6px; color:var(--accent-text); font-size:1.2rem; line-height:1.35; letter-spacing:0; font-weight:600; }
+  h2 { font-size:1.25rem; line-height:1.3; margin:0 0 6px; }
+  h3 { font-size:1.05rem; line-height:1.3; margin:12px 0 4px; }
+  p.lead { color:var(--muted); margin:0 0 20px; font-size:1.1rem; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:20px; padding:18px 20px; margin:16px 0; }
+  .card p { margin:0; }
+  .hero { display:flex; flex-wrap:wrap; align-items:center; gap:16px; margin:8px 0 8px; }
+  .play-badge { display:inline-block; line-height:0; }
+  .guides { list-style:none; padding:0; margin:12px 0 0; display:grid; gap:12px; }
+  .guides a { font-weight:600; }
+  .guides p { margin:2px 0 0; color:var(--muted); font-size:.95rem; }
+  .cta2 { margin:26px 0 0; }
+  .note { color:var(--muted); font-size:.92rem; margin:0; }
+  .feat { display:grid; grid-template-columns:1fr; gap:14px; align-items:center; background:var(--card); border:1px solid var(--line); border-radius:20px; padding:18px 20px; margin:18px 0; }
+  .feat img { width:100%; max-width:300px; height:auto; border-radius:14px; border:1px solid var(--line); justify-self:center; }
+  .feat p, .feat ul { margin:0; }
+  .feat ul { padding-left:1.2em; }
+  @media (min-width:700px) {
+    .feat { grid-template-columns:240px 1fr; gap:24px; }
+    .feat.alt { grid-template-columns:1fr 240px; }
+    .feat.alt img { order:2; }
+    .feat img { max-width:240px; }
+    .feat.noimg { grid-template-columns:1fr; }
+  }
+  details { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:10px 16px; margin:10px 0; }
+  summary { cursor:pointer; font-weight:600; }
+  details p { margin:8px 0 2px; }
+  a { color:var(--link); }
+  .more ul { list-style:none; padding:0; margin:8px 0 0; display:flex; flex-wrap:wrap; gap:6px 18px; }
+  footer { color:var(--muted); font-size:.9rem; margin-top:40px; border-top:1px solid var(--line); padding-top:20px; }
+  footer h2 { font-size:1rem; }
+
+  .topbar { display:flex; flex-wrap:wrap; align-items:baseline; gap:4px 14px; margin:0 0 22px; }
+  .topbar .brand { font-weight:600; color:var(--text); text-decoration:none; }
+  .byline { font-size:.85rem; color:var(--muted); }
+  article h1 { font-size:2.1rem; line-height:1.15; font-weight:600; margin:0 0 10px; letter-spacing:-0.01em; }
+  article h2 { margin:30px 0 8px; }
+  article p, article ul, article ol { margin:0 0 14px; }
+  article ul, article ol { padding-left:1.3em; }
+  article li { margin:0 0 6px; }
+  p.lead { color:var(--muted); font-size:1.1rem; margin:0 0 18px; }
+  figure.shot { margin:20px 0; text-align:center; }
+  figure.shot img { width:100%; max-width:280px; height:auto; border-radius:14px; border:1px solid var(--line); }
+  figure.shot figcaption { color:var(--muted); font-size:.9rem; margin-top:6px; }
+  .play-badge { display:inline-block; line-height:0; }
+  .cta { margin:6px 0 10px; }
+  .related { margin-top:26px; }
+
+</style>
+<script defer src="https://overwatch.kalmarium.com/h.js" data-app="network-troubleshooter"></script>
+</head>
+<body>
+<main>
+<div class="topbar"><a class="brand" href="/">Ultimate Network Troubleshooter</a><a class="byline" href="https://apps.kalmarium.com/?utm_source=network-troubleshooter&amp;utm_medium=byline">By Kalmarium Services</a></div>
+<article>
+<h1>Port scanner basics</h1>
+<p class="lead">A port scanner checks which doors on a device are open. It is a normal tool for checking your own network, and the same technique can be misused against other people. This guide explains in plain words what ports are, what an open port means and why you should only scan networks you own or have clear permission to test.</p>
+<p class="cta"><a class="play-badge" href="https://play.google.com/store/apps/details?id=com.kalmarium.networktroubleshooter&amp;referrer=utm_source%3Dwebsite%26utm_medium%3Dport-scanner-basics" rel="noopener" aria-label="Get it on Google Play: Ultimate Network Troubleshooter"><img src="../img/google-play-badge.png" alt="Get it on Google Play" width="646" height="250" style="width:200px;height:auto"></a></p>
+<h2>What a port is</h2>
+<p>Every device on a network has an address. Programs on that device listen on numbered ports, from 0 to 65535, a bit like numbered doors on one building. A web server listens on port 80 or 443, a secure remote login on port 22, and so on.</p>
+<p>When a program is listening on a port and accepts connections, the port is called open. If nothing is listening, it is closed. A firewall may also drop the attempt silently, which scanners usually report as filtered.</p>
+
+<h2>What a scan does</h2>
+<p>A TCP connect scan tries to open a connection to each port on a list. If the connection succeeds, the port is open. The scan sends packets to the device, which is why it belongs only on devices you are allowed to test. The scanner in Ultimate Network Troubleshooter offers common ports, ports 1 to 1024, or all ports in Advanced mode, and explains each open port in plain language.</p>
+<p>In the app you choose the host to test, either a device found by the device scan or an address you type, and the scanner lists each open port with a short explanation. You do not need to memorise port numbers.</p>
+
+<h2>Ports you will meet</h2>
+<ul>
+<li>21: FTP file transfer, an old protocol that is often not encrypted.</li>
+<li>22: SSH, a secure remote login.</li>
+<li>23: Telnet, a remote login without encryption.</li>
+<li>53: DNS, which turns names into addresses.</li>
+<li>80 and 443: web pages, without and with encryption. Routers and printers often have a settings page here.</li>
+<li>445: Windows file sharing (SMB).</li>
+<li>3389: Windows Remote Desktop.</li>
+</ul>
+
+<figure class="shot"><img src="../img/tools.jpg" width="560" height="610" alt="Tools screen of the app listing Devices and ports, Listening mode and Exposure check" loading="lazy"><figcaption>The Tools screen: Devices and ports, Listening mode and Exposure check.</figcaption></figure>
+
+<h2>Is an open port bad?</h2>
+<p>Not by itself. A router's settings page or a printer's web page needs an open port. Ask three questions instead. Do I need this service? Is it protected by a strong password and kept up to date? Can it be reached only from my home network, or from the whole internet? Old unencrypted services and remote management ports that are reachable from the internet deserve the most attention.</p>
+<p>A common example is a home router that offers its settings page to your local network. That is normal. The same page reachable from the whole internet with a weak password is not.</p>
+<p>The Exposure check in the app looks at what the internet can reach on your network. It is separate from the port scanner, which runs from your phone to the hosts you choose.</p>
+
+<h2>When scanning is legal and when it is not</h2>
+<p>Only scan networks you own or have permission to test. Scanning other people's devices or networks without permission can have legal and other consequences, and to the person on the other end it can look like the first step of an attack. This page is not legal advice. If you are unsure, do not scan, and ask the owner first.</p>
+
+<h2>Safe habits</h2>
+<ul>
+<li>Start with your own devices, for example your router, your computer and your printer.</li>
+<li>Begin with the common ports. Some fragile devices can react badly to many connection attempts in a short time.</li>
+<li>Write down what you find, then close or disable services you do not need.</li>
+<li>If you do not recognise an open port, look up what the service is before you decide what to do about it.</li>
+</ul>
+<p>The app cannot capture other devices' traffic, because Android does not allow it. Its Listening mode only receives what devices announce and sends nothing.</p>
+<h2>Frequently asked questions</h2>
+<details><summary>What is the difference between a device scan and a port scan?</summary><p>A device scan finds which devices answer on your network. A port scan checks which ports on one device accept connections.</p></details>
+<details><summary>Does an open port mean I have been hacked?</summary><p>No. An open port only means a program is listening, which is normal for many devices. Look closer when you do not recognise the service or when it is reachable from the internet without a reason.</p></details>
+<details><summary>Can I scan my neighbour's network to test it?</summary><p>No. Only scan networks you own or have permission to test.</p></details>
+<p class="cta" style="margin-top:22px"><a class="play-badge" href="https://play.google.com/store/apps/details?id=com.kalmarium.networktroubleshooter&amp;referrer=utm_source%3Dwebsite%26utm_medium%3Dport-scanner-basics" rel="noopener" aria-label="Get it on Google Play: Ultimate Network Troubleshooter"><img src="../img/google-play-badge.png" alt="Get it on Google Play" width="646" height="250" style="width:200px;height:auto" loading="lazy"></a></p>
+<div class="related">
+<h2>More guides</h2>
+<ul>
+<li><a href="../best-wifi-channel/">How to choose the best WiFi channel</a></li>
+<li><a href="../wifi-heat-map/">Make a WiFi heat map of your home</a></li>
+</ul>
+</div>
+</article>
+<footer>
+<nav class="more" aria-label="More from Kalmarium">
+<h2>More from Kalmarium</h2>
+<ul>
+<li><a href="https://apps.kalmarium.com/?utm_source=network-troubleshooter&amp;utm_medium=footer">All Kalmarium apps</a></li>
+<li><a href="https://knowdrop.kalmarium.com/?utm_source=network-troubleshooter&amp;utm_medium=footer&amp;utm_campaign=sister">Knowdrop: daily trivia quiz</a></li>
+<li><a href="https://mahjong365.kalmarium.com/?utm_source=network-troubleshooter&amp;utm_medium=footer&amp;utm_campaign=sister">Mahjong365: mahjong solitaire with large tiles</a></li>
+<li><a href="https://tankageddon.kalmarium.com/?utm_source=network-troubleshooter&amp;utm_medium=footer&amp;utm_campaign=sister">Tankageddon: offline tank shooter</a></li>
+<li><a href="https://lingua.kalmarium.com/?utm_source=network-troubleshooter&amp;utm_medium=footer&amp;utm_campaign=sister">Lingua Pairs: word memory game for languages</a></li>
+<li><a href="https://bilingua.kalmarium.com/?utm_source=network-troubleshooter&amp;utm_medium=footer&amp;utm_campaign=sister">Bilingua Reader: bilingual EPUB and PDF reader</a></li>
+<li><a href="https://prep4cert.kalmarium.com/?utm_source=network-troubleshooter&amp;utm_medium=footer&amp;utm_campaign=sister">Prep 4 Cert: Microsoft exam practice questions</a></li>
+<li><a href="https://intercom.kalmarium.com/?utm_source=network-troubleshooter&amp;utm_medium=footer&amp;utm_campaign=sister">Lazy Intercom: family intercom for Android</a></li>
+<li><a href="https://crackafold.kalmarium.com/?utm_source=network-troubleshooter&amp;utm_medium=footer&amp;utm_campaign=sister">Crack A Fold: foldable phone prank</a></li>
+</ul>
+</nav>
+<p><a href="/privacy-policy.html">Privacy policy</a> &middot; Support: <a href="mailto:kalmariumservices@gmail.com">kalmariumservices@gmail.com</a></p>
+<p>&copy; 2026 Kalmarium Services B.V., Almere, the Netherlands.</p>
+<p>Google Play and the Google Play logo are trademarks of Google LLC.</p>
+</footer>
+</main>
+</body>
+</html>

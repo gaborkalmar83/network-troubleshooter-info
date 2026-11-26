@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WiFi Heat Map at Home: Walk Around and Find Weak Spots</title>
+<meta name="description" content="Make a simple WiFi heat map of your home with an Android phone: walk around, tap where you stand and see where the signal is weak. What the colours mean.">
+<link rel="canonical" href="https://netcheck.kalmarium.com/wifi-heat-map/">
+<meta name="theme-color" content="#F5F7F9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#05070A" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Ultimate Network Troubleshooter">
+<meta property="og:title" content="WiFi Heat Map at Home: Walk Around and Find Weak Spots">
+<meta property="og:description" content="Make a simple WiFi heat map of your home with an Android phone: walk around, tap where you stand and see where the signal is weak. What the colours mean.">
+<meta property="og:url" content="https://netcheck.kalmarium.com/wifi-heat-map/">
+<meta property="og:image" content="https://netcheck.kalmarium.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Ultimate Network Troubleshooter app showing a network health score of 92">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="WiFi Heat Map at Home: Walk Around and Find Weak Spots">
+<meta name="twitter:description" content="Make a simple WiFi heat map of your home with an Android phone: walk around, tap where you stand and see where the signal is weak. What the colours mean.">
+<meta name="twitter:image" content="https://netcheck.kalmarium.com/og-image.jpg">
+<link rel="icon" href="../img/icon.png" type="image/png">
+<link rel="apple-touch-icon" href="../img/icon.png">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Organization",
+   "@id": "https://apps.kalmarium.com/#org",
+   "name": "Kalmarium Services",
+   "legalName": "Kalmarium Services B.V.",
+   "alternateName": [
+    "Kalmarium",
+    "Kalmarium Apps"
+   ],
+   "url": "https://apps.kalmarium.com/",
+   "logo": "https://apps.kalmarium.com/brand/dev-icon-512.png",
+   "email": "kalmariumservices@gmail.com",
+   "sameAs": [
+    "https://play.google.com/store/apps/developer?id=Kalmarium+Services",
+    "https://www.youtube.com/@kalmariumservices",
+    "https://kalmarium.com"
+   ]
+  },
+  {
+   "@type": "WebSite",
+   "@id": "https://netcheck.kalmarium.com/#website",
+   "name": "Ultimate Network Troubleshooter",
+   "url": "https://netcheck.kalmarium.com/",
+   "publisher": {
+    "@id": "https://apps.kalmarium.com/#org"
+   }
+  },
+  {
+   "@type": "Article",
+   "@id": "https://netcheck.kalmarium.com/wifi-heat-map/#article",
+   "headline": "WiFi Heat Map at Home: Walk Around and Find Weak Spots",
+   "description": "Make a simple WiFi heat map of your home with an Android phone: walk around, tap where you stand and see where the signal is weak. What the colours mean.",
+   "image": "https://netcheck.kalmarium.com/og-image.jpg",
+   "datePublished": "2026-11-26",
+   "dateModified": "2026-11-26",
+   "inLanguage": "en",
+   "author": {
+    "@id": "https://apps.kalmarium.com/#org"
+   },
+   "publisher": {
+    "@id": "https://apps.kalmarium.com/#org"
+   },
+   "isPartOf": {
+    "@id": "https://netcheck.kalmarium.com/#website"
+   },
+   "mainEntityOfPage": "https://netcheck.kalmarium.com/wifi-heat-map/"
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Ultimate Network Troubleshooter",
+     "item": "https://netcheck.kalmarium.com/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Make a WiFi heat map of your home",
+     "item": "https://netcheck.kalmarium.com/wifi-heat-map/"
+    }
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Does the walk need location access?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes. Android requires precise location permission before any app may list nearby WiFi networks and read their signal. The app uses it on your phone only."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "How many spots do I need to tap?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "There is no fixed number. Tap at least one spot per room, and more along long corridors. More spots make the colours between them more reliable."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Does a green map mean fast WiFi?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "No. Green means a strong signal at that spot. Real speed also depends on your internet plan, the router, how crowded the channel is and your device, so run a speed test as well."
+     }
+    }
+   ]
+  }
+ ]
+}
+</script>
+<style>
+  :root { --bg:#F5F7F9; --text:#0B1114; --muted:#4F5F66; --card:#FFFFFF; --line:#D9E1E5; --accent:#00A88F; --accent-text:#00725F; --link:#0A6FB8; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#05070A; --text:#EAF3F5; --muted:#93A5AB; --card:#0F1519; --line:#243238; --accent:#2DFFB3; --accent-text:#2DFFB3; --link:#5CC8FF; }
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; }
+  main { max-width:860px; margin:0 auto; padding:32px 20px 64px; }
+  h1 { font-size:2.4rem; line-height:1.1; margin:0 0 8px; letter-spacing:-0.02em; font-weight:300; }
+  h1 span { display:block; margin-top:6px; color:var(--accent-text); font-size:1.2rem; line-height:1.35; letter-spacing:0; font-weight:600; }
+  h2 { font-size:1.25rem; line-height:1.3; margin:0 0 6px; }
+  h3 { font-size:1.05rem; line-height:1.3; margin:12px 0 4px; }
+  p.lead { color:var(--muted); margin:0 0 20px; font-size:1.1rem; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:20px; padding:18px 20px; margin:16px 0; }
+  .card p { margin:0; }
+  .hero { display:flex; flex-wrap:wrap; align-items:center; gap:16px; margin:8px 0 8px; }
+  .play-badge { display:inline-block; line-height:0; }
+  .guides { list-style:none; padding:0; margin:12px 0 0; display:grid; gap:12px; }
+  .guides a { font-weight:600; }
+  .guides p { margin:2px 0 0; color:var(--muted); font-size:.95rem; }
+  .cta2 { margin:26px 0 0; }
+  .note { color:var(--muted); font-size:.92rem; margin:0; }
+  .feat { display:grid; grid-template-columns:1fr; gap:14px; align-items:center; background:var(--card); border:1px solid var(--line); border-radius:20px; padding:18px 20px; margin:18px 0; }
+  .feat img { width:100%; max-width:300px; height:auto; border-radius:14px; border:1px solid var(--line); justify-self:center; }
+  .feat p, .feat ul { margin:0; }
+  .feat ul { padding-left:1.2em; }
+  @media (min-width:700px) {
+    .feat { grid-template-columns:240px 1fr; gap:24px; }
+    .feat.alt { grid-template-columns:1fr 240px; }
+    .feat.alt img { order:2; }
+    .feat img { max-width:240px; }
+    .feat.noimg { grid-template-columns:1fr; }
+  }
+  details { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:10px 16px; margin:10px 0; }
+  summary { cursor:pointer; font-weight:600; }
+  details p { margin:8px 0 2px; }
+  a { color:var(--link); }
+  .more ul { list-style:none; padding:0; margin:8px 0 0; display:flex; flex-wrap:wrap; gap:6px 18px; }
+  footer { color:var(--muted); font-size:.9rem; margin-top:40px; border-top:1px solid var(--line); padding-top:20px; }
+  footer h2 { font-size:1rem; }
+
+  .topbar { display:flex; flex-wrap:wrap; align-items:baseline; gap:4px 14px; margin:0 0 22px; }
+  .topbar .brand { font-weight:600; color:var(--text); text-decoration:none; }
+  .byline { font-size:.85rem; color:var(--muted); }
+  article h1 { font-size:2.1rem; line-height:1.15; font-weight:600; margin:0 0 10px; letter-spacing:-0.01em; }
+  article h2 { margin:30px 0 8px; }
+  article p, article ul, article ol { margin:0 0 14px; }
+  article ul, article ol { padding-left:1.3em; }
+  article li { margin:0 0 6px; }
+  p.lead { color:var(--muted); font-size:1.1rem; margin:0 0 18px; }
+  figure.shot { margin:20px 0; text-align:center; }
+  figure.shot img { width:100%; max-width:280px; height:auto; border-radius:14px; border:1px solid var(--line); }
+  figure.shot figcaption { color:var(--muted); font-size:.9rem; margin-top:6px; }
+  .play-badge { display:inline-block; line-height:0; }
+  .cta { margin:6px 0 10px; }
+  .related { margin-top:26px; }
+
+</style>
+<script defer src="https://overwatch.kalmarium.com/h.js" data-app="network-troubleshooter"></script>
+</head>
+<body>
+<main>
+<div class="topbar"><a class="brand" href="/">Ultimate Network Troubleshooter</a><a class="byline" href="https://apps.kalmarium.com/?utm_source=network-troubleshooter&amp;utm_medium=byline">By Kalmarium Services</a></div>
+<article>
+<h1>Make a WiFi heat map of your home</h1>
+<p class="lead">A WiFi heat map shows where in your home the signal is strong and where it fades. With an Android phone you can build a simple one in a few minutes by walking through the rooms and tapping where you stand. This guide explains how it works, what the colours mean and what to do about weak spots.</p>
+<p class="cta"><a class="play-badge" href="https://play.google.com/store/apps/details?id=com.kalmarium.networktroubleshooter&amp;referrer=utm_source%3Dwebsite%26utm_medium%3Dwifi-heat-map" rel="noopener" aria-label="Get it on Google Play: Ultimate Network Troubleshooter"><img src="../img/google-play-badge.png" alt="Get it on Google Play" width="646" height="250" style="width:200px;height:auto"></a></p>
+<h2>What a WiFi heat map tells you</h2>
+<p>WiFi signal strength is measured in dBm. The numbers are negative, and closer to zero means stronger. As rules of thumb, around -50 dBm is very strong, around -70 dBm is usually still fine for browsing and video, and -80 dBm or lower is weak. These are not exact limits. Concrete, brick and metal generally block WiFi more than wood or plasterboard.</p>
+<p>A heat map turns many readings into colours, so you can see weak spots at a glance instead of reading numbers. Distance, walls, floors and metal objects all reduce the signal, which is why one room can be fine and the next one poor.</p>
+
+<h2>How to make the map with the app</h2>
+<ol>
+<li>Connect your phone to your WiFi and open the Walk screen of Ultimate Network Troubleshooter.</li>
+<li>Stand where you want to start and tap that spot on the map.</li>
+<li>Walk to the next spot, for example the next room, and tap where you stand. Repeat in every room where you use WiFi.</li>
+<li>The app measures the signal at each spot you tap and fills in the colours between them.</li>
+<li>A card under the map names your weakest spot and its signal, with a short verdict such as "Weakest spot is still fine".</li>
+</ol>
+<p>The colours between your taps are interpolated, which means estimated from the spots you measured. Tap more spots for a more reliable picture, especially along long corridors. Walls and floors affect the signal, so a house with several floors is easier to read if you walk each floor separately.</p>
+
+<figure class="shot"><img src="../img/walk.jpg" width="560" height="559" alt="Walk mode heat map in shades of green with four tapped spots joined by a dotted path and a card saying the weakest spot is still fine at -50 dBm" loading="lazy"><figcaption>Walk mode. This screenshot comes from a test run on an Android emulator, so it shows the layout rather than a real home.</figcaption></figure>
+
+<h2>What the colours mean</h2>
+<p>In the app, mint green means a strong signal, amber a fair one and coral a weak one. Look for the amber and coral patches: those are the places where video calls tend to stutter or pages stall.</p>
+
+<h2>Tips for a useful map</h2>
+<ul>
+<li>Hold the phone the way you normally use it and walk at an ordinary pace.</li>
+<li>Tap at the places where you really use WiFi, such as the sofa, the desk and the bed, not only in corridors.</li>
+<li>Measure with the router in its normal place, and measure again after you move it.</li>
+<li>Walk the same route after every change, so you can compare the weakest spot before and after.</li>
+<li>A strong signal is not the same as a fast connection. Run a speed test at a weak spot too.</li>
+</ul>
+
+<h2>Fixing weak spots</h2>
+<p>Start with the router. A central, raised, open position away from metal objects, thick walls and appliances usually helps. If a spot is simply too far away, an extra access point or a mesh system can cover it. Check the channel as well, using the <a href="../best-wifi-channel/">best WiFi channel guide</a>.</p>
+<p>If your home has more than one access point, the app's WiFi screen groups networks with the same name into physical boxes and can flag a sticky connection, where a phone clings to a far box instead of moving to a nearer one.</p>
+<p>A phone-based heat map is a rough guide, not a professional site survey. It shows your walking path and measured spots, not a drawing of your rooms.</p>
+<h2>Frequently asked questions</h2>
+<details><summary>Does the walk need location access?</summary><p>Yes. Android requires precise location permission before any app may list nearby WiFi networks and read their signal. The app uses it on your phone only.</p></details>
+<details><summary>How many spots do I need to tap?</summary><p>There is no fixed number. Tap at least one spot per room, and more along long corridors. More spots make the colours between them more reliable.</p></details>
+<details><summary>Does a green map mean fast WiFi?</summary><p>No. Green means a strong signal at that spot. Real speed also depends on your internet plan, the router, how crowded the channel is and your device, so run a speed test as well.</p></details>
+<p class="cta" style="margin-top:22px"><a class="play-badge" href="https://play.google.com/store/apps/details?id=com.kalmarium.networktroubleshooter&amp;referrer=utm_source%3Dwebsite%26utm_medium%3Dwifi-heat-map" rel="noopener" aria-label="Get it on Google Play: Ultimate Network Troubleshooter"><img src="../img/google-play-badge.png" alt="Get it on Google Play" width="646" height="250" style="width:200px;height:auto" loading="lazy"></a></p>
+<div class="related">
+<h2>More guides</h2>
+<ul>
+<li><a href="../best-wifi-channel/">How to choose the best WiFi channel</a></li>
+<li><a href="../port-scanner-basics/">Port scanner basics</a></li>
+</ul>
+</div>
+</article>
+<footer>
+<nav class="more" aria-label="More from Kalmarium">
+<h2>More from Kalmarium</h2>
+<ul>
+<li><a href="https://apps.kalmarium.com/?utm_source=network-troubleshooter&amp;utm_medium=footer">All Kalmarium apps</a></li>
+<li><a href="https://knowdrop.kalmarium.com/?utm_source=network-troubleshooter&amp;utm_medium=footer&amp;utm_campaign=sister">Knowdrop: daily trivia quiz</a></li>
+<li><a href="https://mahjong365.kalmarium.com/?utm_source=network-troubleshooter&amp;utm_medium=footer&amp;utm_campaign=sister">Mahjong365: mahjong solitaire with large tiles</a></li>
+<li><a href="https://tankageddon.kalmarium.com/?utm_source=network-troubleshooter&amp;utm_medium=footer&amp;utm_campaign=sister">Tankageddon: offline tank shooter</a></li>
+<li><a href="https://lingua.kalmarium.com/?utm_source=network-troubleshooter&amp;utm_medium=footer&amp;utm_campaign=sister">Lingua Pairs: word memory game for languages</a></li>
+<li><a href="https://bilingua.kalmarium.com/?utm_source=network-troubleshooter&amp;utm_medium=footer&amp;utm_campaign=sister">Bilingua Reader: bilingual EPUB and PDF reader</a></li>
+<li><a href="https://prep4cert.kalmarium.com/?utm_source=network-troubleshooter&amp;utm_medium=footer&amp;utm_campaign=sister">Prep 4 Cert: Microsoft exam practice questions</a></li>
+<li><a href="https://intercom.kalmarium.com/?utm_source=network-troubleshooter&amp;utm_medium=footer&amp;utm_campaign=sister">Lazy Intercom: family intercom for Android</a></li>
+<li><a href="https://crackafold.kalmarium.com/?utm_source=network-troubleshooter&amp;utm_medium=footer&amp;utm_campaign=sister">Crack A Fold: foldable phone prank</a></li>
+</ul>
+</nav>
+<p><a href="/privacy-policy.html">Privacy policy</a> &middot; Support: <a href="mailto:kalmariumservices@gmail.com">kalmariumservices@gmail.com</a></p>
+<p>&copy; 2026 Kalmarium Services B.V., Almere, the Netherlands.</p>
+<p>Google Play and the Google Play logo are trademarks of Google LLC.</p>
+</footer>
+</main>
+</body>
+</html>
