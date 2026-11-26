@@ -24,7 +24,7 @@
 <body>
 <main>
 <h1>Ultimate Network <span>Troubleshooter</span></h1>
-<p class="lead">Privacy policy. Last updated: 14 November 2026.</p>
+<p class="lead">Privacy policy. Last updated: 26 November 2026.</p>
 
 <p>Ultimate Network Troubleshooter is an Android app that analyses Wi-Fi and mobile networks and offers network tools. It is made by Kalmarium Services BV, the Netherlands ("we"). There is no account, no sign-up and no analytics. We run no server that receives your data.</p>
 
@@ -32,19 +32,22 @@
 <p>Everything the app measures or discovers stays on your device: Wi-Fi networks, signal strength, the devices found on your network, port scan results, the network map, reports, Bluetooth scan results, and your settings. Reports and maps leave the phone only when you choose Share or Save, and then go where you send them.</p>
 
 <h2>Location and nearby devices</h2>
-<p>Android requires precise location access before an app may list nearby Wi-Fi networks, mobile antennas and Bluetooth devices. The app uses it on your phone to show those and to place you on the antenna map. Bluetooth scanning needs the Nearby devices permission. Neither is used for tracking and neither is uploaded by us.</p>
+<p>Android requires precise location access before an app may list nearby Wi-Fi networks, mobile antennas and Bluetooth devices. The app uses it on your phone to show those and to place you on the antenna map. Bluetooth scanning needs the Nearby devices permission. Neither is used for tracking. Bluetooth results never leave the phone. Your position is sent off the phone only to the antenna map services listed below.</p>
 
 <h2>App activity (optional)</h2>
 <p>The App activity tool shows which apps use the network and how much. It reads Android usage statistics on your phone after you grant Usage access. The numbers are kept in memory until you close the report, nothing is sent to us or any other server, and you can revoke Usage access at any time in Android settings.</p>
 
 <h2>Services the app contacts, only when you use the related feature</h2>
 <div class="card">
-<p><b>Antenna map:</b> to place mobile antennas the app sends the cell identity (and nearby Wi-Fi identifiers) to OpenCelliD and BeaconDB, and the visible map area to OpenStreetMap Overpass servers. These services see your internet address and an approximate area.</p>
+<p><b>Antenna map:</b> while the app is open and location access is granted, the app looks up where your mobile antennas are. It sends the identity of the mobile cell your phone is connected to (mobile country and network code, area code, cell id and radio type) to BeaconDB and, when the app build includes an OpenCelliD access key, to OpenCelliD. It does not send nearby Wi-Fi network identifiers. To draw the masts around you it also sends your current position (to five decimal places) to OpenStreetMap Overpass servers, which are asked for masts within 3 km, and, when the build includes an OpenCelliD key, a box of about 1 km around your position to OpenCelliD. The map view loads map tiles from the OpenStreetMap tile servers, which receive the map area you look at. All of these services also see your internet address.</p>
 <p><b>Speed test:</b> uses Cloudflare's public speed test servers (speed.cloudflare.com). <b>iPerf3:</b> connects to the server you pick.</p>
 <p><b>IP and provider, Whois, Exposure check:</b> your public IP address or the domain you enter is sent to RIPEstat, the internet registries (via IANA) and Shodan InternetDB to look up its owner and open ports.</p>
 <p><b>Cloud and services:</b> connects to about 44 public websites and reads the public status pages of Cloudflare, Microsoft, Google, Amazon, GitHub, Slack, Atlassian and OpenAI.</p>
 <p><b>Network tools</b> (ping, route map, DNS, website check, port scan, device scan) send packets to the hosts or devices you choose, as the tool name says. Only scan networks you own or have permission to test.</p>
 </div>
+
+<h2>Diagnostics and problem reports</h2>
+<p>From version 1.1.1, if the app crashes, the crash text (an error trace with a time stamp) is saved in the app's private storage on your phone, and the app keeps the last few hundred log lines of the current session in memory only. Settings &gt; Diagnostics shows exactly what a problem report contains: the app version, your phone make, model and Android version, your language, the ad and purchase status, the last crash and the last log lines. The app never sends this report itself. Only if you tap Send report does your own e-mail app open with a draft addressed to kalmariumservices@gmail.com, which you can read, change or discard before sending; if no e-mail app is found, the report is copied to the clipboard instead. There is no crash-reporting service, no upload and no third-party diagnostics SDK in the app.</p>
 
 <h2>Ads</h2>
 <p>The free version shows a banner ad from Google AdMob. To show and measure ads, Google and its partners may collect and process your advertising ID, IP address (which gives an approximate location), device information and ad interactions. In the European Economic Area, the United Kingdom and Switzerland the app asks for your consent before any ad is requested, and you can change your choice at any time in the app settings under Privacy choices. More about how Google uses data: <a href="https://policies.google.com/technologies/partner-sites">policies.google.com/technologies/partner-sites</a>.</p>
